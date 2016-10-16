@@ -81,3 +81,7 @@ A label is any sequence of characters beginning with a colon, ```:```, for examp
 The goto to use to jump to the label, ```:main```, would be ```goto:main```.
 
 **Note:** StaX needs a conditional construct. At this point in time, it doesn't exist, as the least surprising behaviours seem difficult to reason about.
+
+# License
+
+Unless otherwise mentioned within a file, all contents are licensed according to the contents of [LICENSE.md](LICENSE.md)
