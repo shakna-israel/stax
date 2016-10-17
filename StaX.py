@@ -111,7 +111,7 @@ def parse(controllerObj, stringer):
     # Makes it easier to jump to the label
     for iter, op in enumerate(commands):
         if op:
-            if op[1] == ":":
+            if op[0] == ":":
                 labels[op[1:]] = iter
     # We don't use a proper for loop here,
     # so we can use gotos!
