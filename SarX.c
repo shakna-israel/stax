@@ -1,9 +1,10 @@
 // Macro to remove boilerplate, as all math functions are pretty much identical.
 #define math(__name, __op) void __name() { int a = stack[stack_ptr]; stack_next(); int b = stack[stack_ptr]; stack[stack_ptr] = a __op b; stack_previous(); }
+#define STACK_SIZE 400
 
 int program_ptr = 0;
-int stack[800]; // All the memory we have!
-int stack_ptr = 801;
+int stack[STACK_SIZE]; // All the memory we have!
+int stack_ptr = STACK_SIZE + 1;
 int stack_dir = 0;
 
 //
@@ -52,13 +53,13 @@ math(add, +)
 //out
 void out() {
   if (stack_dir == 0) {
-    for (int i = 0; i < 800; i++) {
+    for (int i = 0; i < STACK_SIZE; i++) {
       if (stack[i] != -1) {
         Serial.print((char)stack[i]);
       }
     }
   } else {
-    for (int i = 800; i > 0; i--) {
+    for (int i = STACK_SIZE; i > 0; i--) {
       if (stack[i] != -1) {
         Serial.print((char)stack[i]);
       }
@@ -102,17 +103,18 @@ void push(int a) {
 
 void setup() {
   //Initialise the stack
-  for (int i = 0; i < 800; i ++) {
+  for (int i = 0; i < STACK_SIZE; i ++) {
     stack[i] = -1;
   }
-  // Enable serial connections
-  Serial.begin(9600);
-}
-
-void loop() {
   for (int i = 20; i > 0; i--) {
     push(65);
   }
+  // Enable serial connections
+  Serial.begin(9600);
+  Serial.println("Welcome");
+}
+
+void loop() {
   out();
-  return;
+  Serial.println("\nLoop fin.");
 }
